@@ -1,0 +1,92 @@
+Windows:
+  arch_graph_path     : C:\Users\t26607bb\Desktop\graph_zcu9eg
+  Data_path           : C:\Users\t26607bb\Desktop\CPS_Project\Path_Search\Data_xczu9eg
+  vivado_project_path : C:\Users\t26607bb\Desktop\Practice\CPS_ZCU104\vivado_proj
+  pyteman_path        : C:\Users\t26607bb\Desktop\Pyteman\pyteman_dist
+
+Linux:
+  arch_graph_path     : /home/bardia/Desktop/bardia/Architecture Graph/ZCU9EG
+  Data_path           : /home/bardia/Desktop/bardia/ManAge_Data/Data_xczu9eg_RO
+  vivado_project_path :
+  pyteman_path        : /home/bardia/Downloads/pyteman/pyteman_dist
+
+General:
+  print_message : False
+  LUT_Dual      : True
+  LUT_Capacity  : 2
+  subLUT_inputs : 1
+  block_mode    : global
+  route_thru    : True
+
+Regex:
+  INT                           : ^INT_X\d+Y\d+$
+  CLB                           : ^CLE(L_[LR]|M(_R)?)_X\d+Y\d+$
+  BRAM                          : ^BRAM_X\d+Y\d+$
+  HCS_tile_label                : RCLK
+  LUT_in_pattern                : ^CLE.*_[A-H][1-6]$
+  LUT_in6_pattern               : ^CLE.*_[A-H]6$
+  FF_in_pattern                 : ^CLE.*_[A-H][_XI]+$
+  FF_out_pattern                : ^CLE.*_[A-H]Q2*$
+  Source_pattern                : ^CLE.*_[A-H]Q2*$
+  Sink_pattern                  : ^CLE.*_[A-H][_XI]+$
+  CLB_out_pattern               : ^CLE.*_[A-H]_O$
+  MUXED_CLB_out_pattern         : ^CLE.*_[A-H]MUX$
+  Unregistered_CLB_out_pattern  : ^CLE.*_[A-H]_O$|^CLE.*_[A-H]MUX$
+  East_CLB                      : ^CLEL_R.*
+  West_CLB                      : (^CLEL_L|^CLEM).*
+  FF_key_pattern                : ^CLE.*/[A-H]FF2*$
+  LUT_key_pattern               : ^CLE.*/[A-H]LUT$
+  top_group                     : ^CLE.*_[E-H].*
+  bottom_group                  : ^CLE.*_[A-D].*
+
+Clock_Domain:
+  virtual_source_node : s
+  virtual_sink_node   : t
+  not_virtual_source_node : s_not
+  not_virtual_sink_node   : t_not
+  clock_domain_types      : {'launch': 'source', 'sample': 'sink'}
+  clock_groups            : {'W_T': 'W_B', 'W_B': 'W_T', 'E_T': 'E_B', 'E_B': 'E_T'}
+
+PIPs:
+  pip_v           : v
+  n_pips_two_CLB  : 3424
+  n_pips_one_CLB  : 2480
+
+Path:
+  max_path_length : 10
+
+TC:
+  max_capacity  : 16
+  long_TC_process_time  : 60
+  long_TC_process_time_local  : 7
+
+Constraints:
+  name_prefix       : design_1_i/top_0/U0/segmented_CPS_inst/CUTs_Inst/CUT_{}/{}
+  launch_net        : Q_launch_int
+  route_thru_net    : Route_Thru
+  launch_FF_cell    : launch_FF
+  sample_FF_cell    : sample_FF
+  not_LUT_cell_name : not_LUT
+  buff_LUT_cell     : Buff_Gen.buffer_LUT
+  N_Parallel        : 50
+
+Parallel:
+  n_jobs            : 3
+
+CM:
+  fin       : 100000000
+  D1        : 1
+  M1        : 15
+  O1        : 15
+  fpsclk1   : 100000000
+  mode_CM1  : incremental
+  D2        : 1
+  M2        : 16
+  O2        : 16
+  fpsclk2   : 100000000
+  mode_CM2  : decremental
+
+RO:
+  temp_label  : Temperature
+  curr_label  : Current
+  time_label  : current_time
